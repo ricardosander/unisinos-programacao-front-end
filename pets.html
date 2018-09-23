@@ -1,9 +1,13 @@
-<!DOCTYPE html>
+xcv<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Meu Pet Humaitá</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/pets.js"></script>
 	</head>
 	<body>
 		<header>
@@ -18,41 +22,23 @@
 			</ol>
 		</nav>
 		<main>
-			<section>
+			<section ng-app="myApp" ng-controller="pets">
 				<article>
 					<a href="novoPet.html" class="button">Novo</a>
 				</article>
 				<article>
 					<table>
 						<tr>
-							<th>Nome</th>
-							<th>Proprietário</th>
-							<th>Espécie</th>
-							<th>Raça</th>
+							<th ng-click="toggleNome=!toggleNome;ordernarPor(toggleNome ? 'nome' : '-nome')">Nome</th>
+							<th ng-click="toggleProprietario=!toggleProprietario;ordernarPor(toggleProprietario ? 'proprietario' : '-proprietario')">Proprietário</th>
+							<th ng-click="toggleEspecie=!toggleEspecie;ordernarPor(toggleEspecie ? 'especie' : '-especie')">Espécie</th>
+							<th ng-click="toggleRaca=!toggleRaca;ordernarPor(toggleRaca ? 'raca' : '-raca')">Raça</th>
 						</tr>
-						<tr>
-							<td><a href="#">Piccolo</a></td>
-							<td><a href="#">Ricardo</a></td>
-							<td>Gato</td>
-							<td>SRD</td>
-						</tr>
-						<tr>
-							<td><a href="#">Mika</a></td>
-							<td><a href="#">Carol</a></td>
-							<td>Cão</td>
-							<td>Fox Paulistinha</td>
-						</tr>
-						<tr>
-							<td><a href="#">Ellie</a></td>
-							<td><a href="#">Ricardo</a></td>
-							<td>Gato</td>
-							<td>SRD</td>
-						</tr>
-						<tr>
-							<td><a href="#">Dory</a></td>
-							<td><a href="#">Altair</a></td>
-							<td>Cão</td>
-							<td>Shitzu</td>
+						<tr ng-repeat="pet in pets | orderBy:minhaOrdenacao"> 
+							<td>{{pet.nome}}</td>
+							<td>{{pet.proprietario}}</td>
+							<td>{{pet.especie}}</td>
+							<td>{{pet.raca}}</td>
 						</tr>
 					</table>
 				</article>

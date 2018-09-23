@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Meu Pet Humaitá</title>
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+		<style>
+			input.ng-invalid {
+			    color: red;
+			}
+			input.ng-empty {
+			    background-color: yellow;
+			}
+		</style>
+ 
+	</head>
+	<body>
+		<header>
+			<img alt="Logo da MeuPet" src="imgs/logo.jpg">
+			<h1>Meu Pet Humaitá</h1>
+		</header>
+		<nav>
+			<ol>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="pets.html">Pets</a></li>
+				<li><a href="proprietarios.html">Proprietários</a></li>
+			</ol>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<h1>Bem-vindo ao Test</h1>
+
+					<div ng-app="myApp" ng-controller="myCtrl">
+ 
+<h1>{{titulo}}</h1>
+ 
+<h2>{{status}}</h2>
+<h2>Conteúdo</h2>
+<p>{{conteudo}}</p>
+ 
+</div>
+ 
+<script>
+var app = angular.module('myApp', []);
+
+
+app.controller('myCtrl', function($scope, $http) {
+
+	$http.get("json.json")
+	  // $http.get("urlInvalida.html")
+	  .then(function(response) {
+	      $scope.titulo   = "Retorno com sucesso";
+	      $scope.conteudo = response.data;
+	      $scope.status   = "Status: " + response.statusText;
+	  }, function(response) {
+	      $scope.titulo   = "Erro ao executar chamada remota";
+	      $scope.conteudo = response.headers();
+	      $scope.status   = "Motivo: " + response.status + " - " + 
+	                        response.statusText;
+	  });
+});
+</script>
+
+
+					</article>
+			</section>
+		</main>
+		<footer>
+			<h6>Meu Pet Humaitá - 2018 - Desenvolvido por <a href="http://www.ricardosander.com.br">Ricardo Sander Lopes</a></h6>
+		<foote>
+	</body>
+</html> 

@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Meu Pet Humaitá</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/pets.js"></script>
 	</head>
@@ -20,32 +21,36 @@
 			</ol>
 		</nav>
 		<main>
-			<section>
+			<section ng-app="myApp" ng-controller="newPet">
 				<article>
-					<form onsubmit="return validate();">
+					<form name="myForm">
 						<div>
 							<labeL for="nome">Nome :</labeL> 
-							<input type="text" name="nome" id="nome" required="required">
+							<input type="text" ng-model="nome" rn-required rn-duasletras rn-DuasLetrasPorNome name="nome" id="nome" required="required">
+							<span class="ng-invalid" ng-show="myForm.nome.$dirty && myForm.nome.$invalid">O nome é de preenchimento obrigatório e deve conter ao menos duas letras por nome.</span>
 						</div>
 						<div>
 							<labeL for="especie">Espécie :</labeL> 
-							<select name="especie" id="especie">
-								<option value="cao">Cão</option>
-								<option value="gato">Gato</option>
+							<select name="especie" id="especie" ng-model="especie" rn-required rn-especie>
+								<option ng-repeat="especie in especies" value="{{especie.valor}}">{{especie.nome}}</option>
 							</select>
+							<span class="ng-invalid" ng-show="myForm.especie.$dirty && myForm.especie.$invalid">Informe uma espécie válida.</span>
 						</div>
 						<div>
 							<labeL for="raca">Raça :</labeL>
-							<input type="text" name="raca" required="required" id="raca">
+							<input type="text" name="raca" required="required" rn-required rn-duasletras id="raca" ng-model="raca">
+							<span  class="ng-invalid" ng-show="myForm.raca.$dirty && myForm.raca.$invalid">A raça é deprenchimento obrigatório</span>
 						</div>
 						<div>
 							<labeL for="proprietario">Proprietário :</labeL> 
-							<input type="text" name="proprietario" id="proprietario">
+							<input type="text" name="proprietario" id="proprietario" ng-model="proprietario" rn-duasletras rn-DuasLetrasPorNome >
+							<span class="ng-invalid" ng-show="myForm.proprietario.$dirty && myForm.proprietario.$invalid">O propritário não é obrigatório mas deve conter ao menos duas letras por nome.</span>
 						</div>
 						<div>
 							<button class="button">Salvar</button>
 						</div>
 					</form>
+					<p>Cadastrando pet {{nome}} da espécie {{especie}}, raça {{raca}}.</p>
 				</article>
 			</section>
 		</main>

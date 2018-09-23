@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Meu Pet Humaitá</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/proprietarios.js"></script>
 	</head>
@@ -20,25 +21,29 @@
 			</ol>
 		</nav>
 		<main>
-			<section>
+			<section ng-app="myApp" ng-controller="newProprietario">
 				<article>
-					<form onsubmit="return validar()">
+					<form name="myForm">
 						<div>
 							<labeL for="nome">Nome :</labeL> 
-							<input type="text" name="nome" id="nome" required="required">
+							<input type="text" name="nome" id="nome" ng-model="nome" required="required" rn-required rn-duasletras rn-DuasLetrasPorNome rn-DuasPalavras>
+							<span class="ng-invalid" ng-show="myForm.nome.$dirty && myForm.nome.$invalid">O nome é de preenchimento obrigatório e deve conter ao menos duas letras por nome e dois nomes.</span>
 						</div>
 						<div>
 							<labeL for="telefone">Telefone :</labeL>
-							<input type="text" name="telefone" required="required" id="telefone">
+							<input type="text" name="telefone" required="required" id="telefone" ng-model="telefone" rn-required rn-telefone >
+							<span class="ng-invalid" ng-show="myForm.telefone.$dirty && myForm.telefone.$invalid">O telefone é de preenchimento obrigatório e deve estar em um formato válido com 11 dígitos (DDD + 9 dígitos).</span>
 						</div>
 						<div>
 							<labeL for="endereco">Endereço :</labeL> 
-							<input type="text" name="endereco" id="endereco" required="required">
+							<input type="text" name="endereco" id="endereco" ng-model="endereco" required="required" rn-required rn-endereco>
+							<span class="ng-invalid" ng-show="myForm.endereco.$dirty && myForm.endereco.$invalid">O endereço é de preenchimento obrigatório e deve conter logradouro, número, bairro e cidade, separados por vírgula.</span>
 						</div>
 						<div>
 							<button class="button">Salvar</button>
 						</div>
 					</form>
+					<p>Cadastrando proprietário {{nome}} com telefone {{telefone}} e endereço {{endereco}}.</p>
 				</article>
 			</section>
 		</main>

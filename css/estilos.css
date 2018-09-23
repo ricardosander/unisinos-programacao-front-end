@@ -1,0 +1,178 @@
+html {
+	background-color: deepskyblue;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	font-family: Georgia;
+	color: black;
+}
+
+body {
+	height: 50em;
+	margin: 0px;
+	border : 0px;
+	padding: 0px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto 10fr 1fr;
+}
+
+header {
+	height: 120px;
+	margin: 0px;
+	padding: 0px;
+	grid-row: 1;
+	grid-column: 1;
+	margin-top: 0px;
+	background-color: deepskyblue;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr;
+}
+
+header img {
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	height: 120px;
+	width: auto;
+	border: 3px black solid;
+	display: inline;
+	grid-row: 1 / 2;
+	grid-column: 1;
+	box-sizing: border-box;
+	border-radius: 15px;
+}
+
+header h1 {
+	margin: 0px;
+	padding: 0em;
+	padding-left: 150px;
+	padding-top: 1.5em;
+	display: inline;
+	grid-row: 1;
+	grid-column: 1;
+	font-family: Tahoma;
+}
+
+nav {
+	grid-row: 2;
+	grid-column: 1;
+	background-color: hotpink;
+	padding: 0.5em;
+	font-family: Comic Sans MS;
+}
+
+nav ol {
+	margin: 0px;
+	text-align: left;
+	padding: 0px;
+}
+
+nav ol li {
+	list-style: none;
+	display: inline-block;	
+	border-right: 1px black solid;
+	padding-right: 1em;
+	margin-right: 1em;
+}
+
+nav ol li ol {
+	border: : 0px;
+	position: absolute;
+	padding: 0px;
+	margin: 0px;
+}
+
+nav ol li a {
+	color: inherit;
+	text-decoration: none;
+}
+
+nav ol li a:hover {
+	color: snow;
+}
+
+main {
+	grid-row: 3;
+	grid-column: 1;
+	background-color: honeydew;
+	padding: 2em;
+}
+
+footer {
+	padding: 1em;
+	text-align: center;
+	grid-row: 4;
+	grid-column: 1;
+	background-color: blueviolet;
+	color : white;
+}
+
+footer h6 {
+	font-size: 1em;
+	padding: 0px;
+	margin: 0px;
+}
+
+footer h6 a {
+	text-decoration: none;
+	color: inherit;
+}
+
+table {
+	width: 100%;
+}
+
+table tr th {
+	background-color: lightgray;
+}
+
+table tr {
+	background-color: snow;
+	border: 1px black solid;
+}
+
+table tr td a {
+	text-decoration: none;
+	color: inherit;
+}	
+
+article {
+	margin: 10px;
+}
+
+.button {
+	height:  50px;
+	width: 50px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: darkviolet;
+	color: honeydew;
+	text-decoration: none;
+}
+
+form {
+	display: table;
+}
+
+form div {
+	display: table-row;
+}
+
+form label {
+	display: table-cell;
+}
+
+form input {
+	display: table-cell;
+}
+
+form select {
+	display: table-cell;
+}
+
+span.ng-invalid {
+	color : red;
+	background-color: yellow;
+}
