@@ -46,14 +46,19 @@ function isEspecieValid(value) {
 	return false;
 }
 
-app.controller("pets", function($scope) {
+app.controller("pets", function($scope, $http) {
 
-	$scope.pets = [
-		new Pet("Sr Piccolo", "Gato", "SRD", "Ricardo"), 
-		new Pet("Mika", "Cão", "Fox Paulista", "Carol"),
-		new Pet("Ellie", "Gato", "SRD", "Ricardo"),
-		new Pet("Dory", "Cão", "Shitzu", "Altair")
-	];
+	$http.get("repository/pets.json")
+		.then(function(response) {
+
+			console.log(response.status + " - " + response.statusText +  " : " + response.data);
+			if (response.status == 200) {
+				$scope.pets = response.data;
+			}
+		}, function(response) {
+			console.log(response.status + " - " + response.statusText +  " : " + response.data);
+			alert("Problemas ao carregar a página. Tente novamente.");
+		});
 
 	$scope.ordernarPor = function(campo) {
 		$scope.minhaOrdenacao = campo;

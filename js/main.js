@@ -1,11 +1,5 @@
 var app = angular.module("myApp",[]);
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "file:///Users/ricardo/workspace/web/unisinos-programacao-front-end");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 function isEmpty(value) {
 	return value == undefined || value == null || value.trim().length == 0;
 }
