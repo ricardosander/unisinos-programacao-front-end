@@ -1,26 +1,28 @@
-[
-	{
-		nome : "Sr Piccolo", 
-		especie : "Gato", 
-		raca : "SRD", 
-		proprietario : "Ricardo"
-	},
-	{
-		nome : "Mika", 
-		especie : "Cão", 
-		raca : "Fox Paulista", 
-		proprietario : "Carol"
-	},
-	{
-		nome : "Ellie", 
-		especie : "Gato", 
-		raca : "SRD", 
-		proprietario : "Ricardo"
-	},
-	{
-		nome : "Dory", 
-		especie : "Cão", 
-		raca : "Shitzu", 
-		proprietario : "Altair"
-	},
-]
+{
+	[
+		{
+			nome : "Sr Piccolo", 
+			especie : "Gato", 
+			raca : "SRD", 
+			proprietario : "Ricardo"
+		},
+		{
+			nome : "Mika", 
+			especie : "Cão", 
+			raca : "Fox Paulista", 
+			proprietario : "Carol"
+		},
+		{
+			nome : "Ellie", 
+			especie : "Gato", 
+			raca : "SRD", 
+			proprietario : "Ricardo"
+		},
+		{
+			nome : "Dory", 
+			especie : "Cão", 
+			raca : "Shitzu", 
+			proprietario : "Altair"
+		}
+	]
+}
