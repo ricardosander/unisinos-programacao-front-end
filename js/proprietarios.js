@@ -58,7 +58,7 @@ app.controller("newProprietario", function($scope) {
 	
 });
 
-app.controller("proprietarios", function($scope) {
+app.controller("proprietarios", function($scope, $http) {
 
 	$http.get("repository/pessoas.json")
 		.then(function(response) {
