@@ -23,7 +23,7 @@
 		<main>
 			<section ng-app="myApp" ng-controller="newProprietario">
 				<article>
-					<form name="myForm">
+					<form name="myForm" ng-submit="submit(myForm)">
 						<div>
 							<labeL for="nome">Nome :</labeL> 
 							<input type="text" name="nome" id="nome" ng-model="nome" required="required" rn-required rn-duasletras rn-DuasLetrasPorNome rn-DuasPalavras>
@@ -40,7 +40,7 @@
 							<span class="ng-invalid" ng-show="myForm.endereco.$dirty && myForm.endereco.$invalid">O endereço é de preenchimento obrigatório e deve conter logradouro, número, bairro e cidade, separados por vírgula.</span>
 						</div>
 						<div>
-							<button class="button">Salvar</button>
+							<button class="button" type="submit" id="submit">Salvar</button>
 						</div>
 					</form>
 					<p>Cadastrando proprietário {{nome}} com telefone {{telefone}} e endereço {{endereco}}.</p>

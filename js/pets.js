@@ -37,7 +37,14 @@ function Pet(nome, especie, raca, proprietario) {
 
 }
 
+function fakeRequest(pet) {
+	alert(pet.nome + " cadastrado com sucesso!");
+}
+
 function isEspecieValid(value) {
+	if (isEmpty(value)) {
+		return false;
+	}
 	for (var index in especies) {
 		if (especies[index].valor == value) {
 			return true;
@@ -64,10 +71,37 @@ app.controller("pets", function($scope, $http) {
 	$scope.ordernarPor = function(campo) {
 		$scope.minhaOrdenacao = campo;
 	}
+
 });
 
-app.controller("newPet", function($scope) {
+app.controller("newPet", function($scope, $http) {
+
 	$scope.especies = especies;
+
+	$scope.submit = function(form) {
+		
+		if (!form.$valid) {
+			alert("Por favor, preencha o formulário corretamente.");
+			return false;
+		}
+
+		var pet = new Pet($scope.nome, $scope.especie, $scope.raca, $scope.proprietario);
+		$http.post("newPet.html").then(fakeRequest(pet));
+
+		$scope.nome = undefined;
+		$scope.especie = undefined;
+		$scope.raca = undefined;
+		$scope.proprietario = undefined;
+
+		form.nome.$setPristine();
+		form.especie.$setPristine();
+		form.raca.$setPristine();
+		form.proprietario.$setPristine();
+
+		return true;
+
+	}
+
 });
 
 app.directive("rnEspecie", function() {
@@ -82,75 +116,3 @@ app.directive("rnEspecie", function() {
 		}
 	};
 });
-// function validate() {
-
-// 	var nome = document.getElementById("nome").value;
-// 	var especie = document.getElementById("especie").value;
-// 	var raca = document.getElementById("raca").value;
-// 	var proprietario = document.getElementById("proprietario").value;
-
-// 	var pet = new Pet(nome, especie, raca, proprietario);
-	
-// 	console.log(JSON.stringify(pet));
-
-// 	if (!validatePet(pet)) {
-// 		return false;
-// 	}
-
-// 	//enviar
-
-// 	return true;
-
-// }
-
-// function validatePet(pet) {
-
-// 	if (pet == undefined || pet == null) {
-// 		alert("Erro de validação. Por favor, tenta novamente.");
-// 		return false;
-// 	}
-
-// 	if (isEmpty(pet.getNome())) {
-// 		alert("O nome do pet é de preenchimento obrigatório.");
-// 		document.getElementById("nome").focus();
-// 		return false;
-// 	}
-
-// 	if (pet.getNome().trim().length < 2) {
-// 		alert("O nome do pet deve ter ao menos duas letras.");
-// 		document.getElementById("nome").focus();
-// 		return false;
-// 	}
-
-// 	if (isEmpty(pet.getEspecie())) {
-// 		alert("A espécie do pet é de preenchimento obrigatório.");
-// 		document.getElementById("especie").focus();
-// 		return false;
-// 	}
-
-// 	if (!isEspecieValid(pet.getEspecie())) {
-// 		alert("A espécie informada é inválida.");
-// 		document.getElementById("especie").focus();
-// 		return false;
-// 	}
-
-// 	if (isEmpty(pet.getRaca())) {
-// 		alert("A raça do pet é de preenchimento obrigatório.");
-// 		document.getElementById("raca").focus();
-// 		return false;
-// 	}
-
-// 	if (pet.getEspecie().trim().length < 2) {
-// 		alert("A espécie deve ter ao menos duas letras.");
-// 		document.getElementById("especie").focus();
-// 		return false;
-// 	}
-
-// 	if (!isEmpty(pet.getProprietario()) && pet.getProprietario().trim().length < 2) {
-// 		alert("O nome do proprietário deve ter ao menos duas letras, quando informado.");
-// 		document.getElementById("proprietario").focus();
-// 		return false;
-// 	}
-
-// 	return true;
-// }
