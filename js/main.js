@@ -1,9 +1,4 @@
-var app = angular.module("myApp",['ngRoute']);
-
-app.config(function($routeProvider) {
-	$routeProvider
-		.when("/", {templateUrl : "inicio.html"});
-});
+var app = angular.module("myApp",[]);
 
 function isEmpty(value) {
 	return value == undefined || value == null || value.trim().length == 0;
