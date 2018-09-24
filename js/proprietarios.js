@@ -64,7 +64,7 @@ app.controller("proprietarios", function($scope, $http) {
 		.then(function(response) {
 
 			if (response.status == 200) {
-				$scope.pets = response.data;
+				$scope.proprietarios = response.data;
 			}
 		}, function(response) {
 			console.log(response);
