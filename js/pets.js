@@ -48,7 +48,7 @@ function isEspecieValid(value) {
 
 app.controller("pets", function($scope, $http) {
 
-	$http.get("repository/pets.json")
+	$http.get("json.json")
 		.then(function(response) {
 
 			console.log(response.status + " - " + response.statusText +  " : " + response.data);
