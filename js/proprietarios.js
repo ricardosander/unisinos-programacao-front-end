@@ -59,12 +59,19 @@ app.controller("newProprietario", function($scope) {
 });
 
 app.controller("proprietarios", function($scope) {
-	
-	$scope.proprietarios = [
-		new Pessoa("Ricardo", "(51) 99134-5589", "Rua tal 123, Humaitá, Porto Alegre"),
-		new Pessoa("Carol", "(51) 99124-5586", "Av Renner 67, Gleba, Canoas"),
-		new Pessoa("Altair", "(51) 98734-5422", "Rua 45 95, Rio Branco, Porto Alegre")
-	];
+
+	$http.get("repository/pessoas.json")
+		.then(function(response) {
+
+			if (response.status == 200) {
+				$scope.pets = response.data;
+			}
+		}, function(response) {
+			console.log(response);
+			console.log(response.status + " - " + response.statusText +  " : " + response.data);
+			alert("Problemas ao carregar a página. Tente novamente.");
+		}
+	);
 
 	$scope.ordernarPor = function(campo) {
 		$scope.minhaOrdenacao = campo;
