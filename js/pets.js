@@ -51,11 +51,13 @@ app.controller("pets", function($scope, $http) {
 	$http.get("json.json")
 		.then(function(response) {
 
+			console.log(response);
 			console.log(response.status + " - " + response.statusText +  " : " + response.data);
 			if (response.status == 200) {
 				$scope.pets = response.data;
 			}
 		}, function(response) {
+			console.log(response);
 			console.log(response.status + " - " + response.statusText +  " : " + response.data);
 			alert("Problemas ao carregar a página. Tente novamente.");
 		});
